@@ -1,6 +1,6 @@
 with source_part as (
 
-    select * from {{ source('tpch_sf001', 'part') }}
+    select * from {{ source('public', 'part') }}
 
 ),
 

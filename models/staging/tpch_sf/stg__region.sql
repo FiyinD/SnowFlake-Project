@@ -1,6 +1,6 @@
 with source_region as (
 
-    select * from {{ source('tpch_sf001', 'region') }}
+    select * from {{ source('public', 'region') }}
 
 ),
 

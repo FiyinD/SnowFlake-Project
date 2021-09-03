@@ -1,6 +1,6 @@
 with source_lineitem as (
 
-    select * from {{ source('tpch_sf001', 'lineitem') }}
+    select * from {{ source('public', 'lineitem') }}
 
 ),
 
