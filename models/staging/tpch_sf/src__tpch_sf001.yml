@@ -1,8 +1,8 @@
 version: 2
 
 sources:
-  - name: tpch_sf001
-    database: snowflake_sample_data
+  - name: public
+    database: sample_database
     tables:
       - name: customer
       - name: orders
