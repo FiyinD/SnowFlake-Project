@@ -1,4 +1,4 @@
-with orders as {{ ref('fct__orders') }},
+with orders as (select * from {{ ref('fct__orders') }}),
 
 summarized_orders as (
     select 
@@ -7,21 +7,21 @@ summarized_orders as (
     from 
         orders
     group by 
-        total_sales
+        customer_key
 ),
 
-customers as {{ ref('stg__customers') }},
+customers as (select * from {{ ref('stg__customers') }}),
 
 refined_customers as (
     select 
         customers.key,
         name,
         account_bal,
-        coalesce(orders.total_sales, 0) as total_sales,
+        coalesce(summarized_orders.total_sales, 0) as total_sales,
         market_segment,
         address,
         customers.nation_key,
-        customer.phone
+        customers.phone
     from
         customers
     left join
@@ -32,6 +32,6 @@ refined_customers as (
         total_sales,
         account_bal
     desc
-),
+)
 
 select * from refined_customers
