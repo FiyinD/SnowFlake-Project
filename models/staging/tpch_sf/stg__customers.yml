@@ -16,7 +16,6 @@ models:
       - name: number
         tests:
           - not_null
-          - unique
   - name: stg__orders
     columns:
       - name: key
